@@ -1,0 +1,124 @@
+%==============================================================================
+% Sjabloon onderzoeksvoorstel bachelorproef
+%==============================================================================
+% Gebaseerd op LaTeX-sjabloon ‘Stylish Article’ (zie voorstel.cls)
+% Auteur: Jens Buysse, Bert Van Vreckem
+
+% TODO: Compileren document:
+% 1) Vervang ‘naam_voornaam’ in de bestandsnaam door je eigen naam, bv.
+%    buysse_jens_voorstel.tex
+% 2) latexmk -pdf naam_voornaam_voorstel.tex
+% 3) biber naam_voornaam_voorstel
+% 4) latexmk -pdf naam_voornaam_voorstel.tex (1 keer)
+
+\documentclass[fleqn,10pt]{voorstel}
+
+%------------------------------------------------------------------------------
+% Metadata over het artikel
+%------------------------------------------------------------------------------
+
+\JournalInfo{HoGent Bedrijf en Organisatie} % Journal information
+\Archive{Onderzoekstechnieken 2016 - 2017} % Additional notes (e.g. copyright, DOI, review/research article)
+
+%---------- Titel & auteur ----------------------------------------------------
+
+% TODO: geef werktitel van je eigen voorstel op
+\PaperTitle{Is er een business model voor het bedrijf om een infrastructuur op te zetten met kubernetes?}
+\PaperType{Onderzoeksvoorstel Bachelorproef} % Type document
+
+% TODO: vul je eigen naam in als auteur, geef ook je emailadres mee!
+\Authors{Pieter-Jan Philips - pieterjan.philips@gmail.com} % Authors
+\affiliation{\textbf{Contact:}
+  \textsuperscript{1} \href{mailto:pieterjan.philips@gmail.com}{pieterjan.philips@gmail.com}}
+  
+
+%---------- Abstract ----------------------------------------------------------
+
+  \Abstract{
+  	In dit onderzoek wil ik bekijken of het mogelijk is om een business model te creëren in de open-source software Kubernetes, in combinatie met een bestaand business model op basis van VMWare en Openstack. Deze opdracht hangt nauw samen met de stage die ik ga volgen bij het bedrijf Combell. Het onderzoek zal als volgt verlopen: eerst is het de bedoeling om het huidige systeem in kaart te brengen om zo te gaan achterhalen waar Kubernetes handig kan zijn. Een 2de stap zou zijn om mezelf te gaan verdiepen in Kubernetes om een beter inzicht te krijgen in wat het te bieden heeft. Een 3de stap zou zijn, het maken van een testopstelling. En in een finale stap is het de bedoeling om de resultaten te gaan interpreteren en conclusies op de vraag te formuleren. In dit document staan al deze stappen nog verder uitgelegd. Ik verwacht dat dit onderzoek een duidelijk antwoord zal kunnen geven op de gestelde vraag en dat men aan de hand van de conclusies het correcte business model kan kiezen.
+}
+
+%---------- Onderzoeksdomein en sleutelwoorden --------------------------------
+% TODO: Sleutelwoorden:
+%
+% Het eerste sleutelwoord beschrijft het onderzoeksdomein. Je kan kiezen uit
+% deze lijst:
+%
+% - Mobiele applicatieontwikkeling
+% - Webapplicatieontwikkeling
+% - Applicatieontwikkeling (andere)
+% - Systeem- en netwerkbeheer
+% - Mainframe
+% - E-business
+% - Databanken en big data
+% - Machine learning en kunstmatige intelligentie
+% - Andere (specifieer)
+%
+% De andere sleutelwoorden zijn vrij te kiezen
+
+\Keywords{Onderzoeksdomein. Systeem- en netwerkbeheer --- Applicatieontwikkeling } % Keywords
+\newcommand{\keywordname}{Sleutelwoorden} % Defines the keywords heading name
+
+%---------- Titel, inhoud -----------------------------------------------------
+\begin{document}
+
+\flushbottom % Makes all text pages the same height
+\maketitle % Print the title and abstract box
+\tableofcontents % Print the contents section
+\thispagestyle{empty} % Removes page numbering from the first page
+
+%------------------------------------------------------------------------------
+% Hoofdtekst
+%------------------------------------------------------------------------------
+
+%---------- Inleiding ---------------------------------------------------------
+
+\section{Introductie} % The \section*{} command stops section numbering
+\label{sec:introductie}
+
+Dankzij mijn stage bij het bedrijf Combell ben ik in aanraking gekomen met verschillende soorten servers, een van die servers was de cloud. Hier bij Combell werken ze al met VMWare en Openstack. Nu werd mij hier gevraagd of ik een studie wou doen over de open-source software Kubernetes. Nu is de doelstelling van dit onderzoek niet louter een studie op te bouwen maar ook concreet te gaan bekijken hoe we Kubernetes kunnen integreren in de huidige infrastructuur.
+
+%---------- Stand van zaken ---------------------------------------------------
+
+\section{State-of-the-art}
+\label{sec:state-of-the-art}
+
+De virtualisatie software VMWare en het cloudplatform Openstack bestaan al ettelijke jaren en hier is al meermaals onderzoek naar gedaan. Ook over Kubernetes is er al onderzoek gedaan. Aangezien dit onderzoek een opdracht is die specifiek is voor het stagebedrijf zal de implementatie en onderzoek naar de functionaliteit verschillend zijn dan alle huidig gevoerde onderzoeken.
+
+% Voor literatuurverwijzingen zijn er twee belangrijke commando's:
+% \autocite{KEY} => (Auteur, jaartal) Gebruik dit als de naam van de auteur
+%   geen onderdeel is van de zin.
+% \textcite{KEY} => Auteur (jaartal)  Gebruik dit als de auteursnaam wel een
+%   functie heeft in de zin (bv. ``Uit onderzoek door Doll & Hill (1954) bleek
+%   ...'')
+
+%---------- Methodologie ------------------------------------------------------
+\section{Methodologie}
+\label{sec:methodologie}
+
+Het onderzoek zal verlopen in fasen beginnend met de onderzoeksfase, in deze eerste fase is het de bedoeling om het huidige systeem in kaart te brengen, dit door mezelf eerst te gaan verdiepen in de wereld van VMWare en Openstack. Een 2de fase zou zijn om het Kubernetes platform te gaan onderzoeken om een beter begrip te krijgen van wat het juist inhoudt. In een 3de fase is het de bedoeling om een testopstelling te maken met de info die we uit fase 2 hebben vergaard. Door middel van deze testopstelling kunnen we gemakkelijk een integratieplan maken. In de laatste fase kunnen we aan de hand van dit integratieplan onze conclusies trekken.
+
+%---------- Verwachte resultaten ----------------------------------------------
+\section{Verwachte resultaten}
+\label{sec:verwachte_resultaten}
+
+Aangezien ik tot op heden nog niet weet hoe het huidige systeem eruit ziet, kan ik nog geen voorspelling maken van de te verwachten resultaten. Aangezien ik deze opdracht gekregen heb van een bedrijf veronderstel ik dat ze hier zelf al wel een klein onderzoek naar gedaan hebben. Dus verwacht ik dat dit onderzoek een duidekijk beeld kan geven voor de gestelde vraag.
+
+%---------- Verwachte conclusies ----------------------------------------------
+\section{Verwachte conclusies}
+\label{sec:verwachte_conclusies}
+
+Ik veronderstel dat dit resultaat een van 2 uitkomsten zal kennen. Een eerste mogelijke uitkomst is dat de toevoeging van Kubernetes een positieve meerwaarde zal hebben op het bedrijf en dat het in de toekomst kan geïmplementeerd worden. Een 2de mogelijke oplossing lijkt mij dat het Kubernetes systeem te complex is of helemaal geen toegevoegde waarde kan bieden voor het bedrijf.
+
+%------------------------------------------------------------------------------
+% Referentielijst
+%------------------------------------------------------------------------------
+% TODO: de gerefereerde werken moeten in BibTeX-bestand ``biblio.bib''
+% voorkomen. Gebruik JabRef om je bibliografie bij te houden en vergeet niet
+% om compatibiliteit met Biber/BibLaTeX aan te zetten (File > Switch to
+% BibLaTeX mode)
+
+\phantomsection
+\printbibliography[heading=bibintoc]
+
+\end{document}

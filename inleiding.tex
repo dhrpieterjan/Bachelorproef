@@ -1,0 +1,81 @@
+%%=============================================================================
+%% Inleiding
+%%=============================================================================
+
+\chapter{Inleiding}
+\label{ch:inleiding}
+
+De inleiding moet de lezer alle nodige informatie verschaffen om het onderwerp te begrijpen zonder nog externe werken te moeten raadplegen \autocite{Pollefliet2011}. Dit is een doorlopende tekst die gebaseerd is op al wat je over het onderwerp gelezen hebt (literatuuronderzoek).
+
+Je verwijst bij elke bewering die je doet, vakterm die je introduceert, enz. naar je bronnen. In \LaTeX{} kan dat met het commando \texttt{$\backslash${textcite\{\}}} of \texttt{$\backslash${autocite\{\}}}. Als argument van het commando geef je de ``sleutel'' van een ``record'' in een bibliografische databank in het Bib\TeX{}-formaat (een tekstbestand). Als je expliciet naar de auteur verwijst in de zin, gebruik je \texttt{$\backslash${}textcite\{\}}.
+Soms wil je de auteur niet expliciet vernoemen, dan gebruik je \texttt{$\backslash${}autocite\{\}}. Hieronder een voorbeeld van elk.
+
+\textcite{Knuth1998} schreef een van de standaardwerken over sorteer- en zoekalgoritmen. Experten zijn het erover eens dat cloud computing een interessante opportuniteit vormen, zowel voor gebruikers als voor dienstverleners op vlak van informatietechnologie~\autocite{Creeger2009}.
+
+\section{Huidige technologieën}
+\label{sec:stand-van-zaken}
+
+
+\subsection{Aanbod}
+
+De meest eenvoudige bron om te achterhalen wat Combell aan te bieden heeft is de website. Als we de website van Combell bekijken zien we direct 6 grote groepen namelijk:
+
+\begin{itemize}  
+	\item Domeinnamen
+	\item Hosting
+	\item Managed Hosting
+	\item Email
+	\item Tools
+	\item Reseller
+\end{itemize}
+
+Laten we eerst de minst interessante voor dit onderzoek bekijken. Beginnend met domeinnamen, hier kan je zoals het woord het aangeeft je domeinnaam registreren. Ook kan je eenvoudig je bestaande domeinnaam die ergens anders aangekocht is, verhuizen naar Combell. Dit kan handig zijn als je ook je website ruimte huurt bij Combell. Zo staat alles op een plaats. 
+
+Een 2de minder interessant deel voor deze proef zijn de email services. Onder het tabje email vind je 3 grote groepen. Als eerste hebben we de simpele email hosting pakketten. Deze worden geadverteerd als "Professioneel e-mailen vanop elk toestel". Hier krijg je een mailbox van 1, 5, of 25Gb Voorzien van de nodige backups, spamfilters en antivirus. Een 2de grote groep is de Exchange mail aanbieding. Ook wel de "Dé mailbox voor bedrijven en professionals" genoemd. Dit zijn exchange mailboxen van 35 of 50Gb met de extra optie om agenda's en takenlijsten toe te voegen. Ook heb je hier de mogelijkheid om vergaderzalen te boeken. Een 3de en laatste oplossing zijn de Office 356 mailboxen. Zoals de titel het zelf zegt, "Een Exchange mailbox met de complete Office Suite". Deze bevat een mailbox van 50Gb en 1Tb aan OneDrive opslag. Hier heb je dan ook nog eens de mogelijkheid om de Office Suite online te gebruiken of om ze te gaan installeren op maximaal 5 toestellen.
+
+Onder het tabblad tools vinden we "Tools voor online werken" en "Veeam Cloud Connect". Een van de populairste pakketten voor mensen die geen programmeer kennis hebben is het sitebuilder pakket. Hier kan je zonder te moeten programmeren een site bouwen die word online gezet op de shared hosting cluster. Onder de tools voor online werken vind je ook nog Office 356, online desktop en online fax terug. Maar deze hebben weinig of geen toegevoegde waarde aan deze proef.
+
+Als laatste tabblad hebben we de reseller optie, hier bied Combell u de mogelijkheid om zelf reseller te zijn met de servers van Combell. Hier betaald de reseller enkel wat hij gebruikt en kan zo ook van een aantal kortingen genieten.
+
+Dan gaan we nu over naar de meest belangrijke groep namelijk de hosing en managed hosting. 
+
+Onder het hosting tabblad zien we dat er 3 grote groepen zijn, namelijk, webhosting, vps of virtuele private server en OpenStack cloud server. 
+Laten we beginnen met de webhosting, hier krijg je een folder op de server die je moet delen met ongeveer 400 andere klanten. Met andere woorden, hier heb je geen controle over de configuratie van de server. Wens je in deze folder een CMS (Content managemanet system) te gebruiken dan kan je hier bij aankoop kiezen voor Wordpress, Drupal, Joomla of Magento.
+Een 2de optie is de iets krachtigere VPS. In dit pakket zit een controle paneel genaamd PLESK die het de klant mogelijk maakt om zelf te gaan configureren welke technologie uw site wenst te gebruiken. PLESK heeft onderandere plugins voor Wordpress, docker en Git. Wenst de klant dan toch om zijn server zelf te beheren dan is er de openstack cloud server. Dit is een zeer belangrijk platform voor deze proef aangezien we hier ons kubernetes cluster op gaan lanceren.
+
+Kijken we dan naar de managed hosting dan zien we dat we hier een aanbod krijgen dat eigenlijk puur afhankelijk is van de wensen van de klant. Wenst de klant een server met extra ram of extra processors dan is dit heel gemakkelijk aan te maken of toe te voegen. Aangezien ik mijn stage doe bij het operations team, ben ik vrij vertrouwd met de werking en onderhoud van dit soort servers. Het operations team is verantwoordelijk voor het onderhoud en de oplevering van deze managed server. Veel bedrijven die bij Combell komen vragen naar oplossingen hebben meestal meerdere van deze servers. Aangezien deze server aan te maken zijn volgens de klant zijn wensen is het dus ook mogelijk om het operating system te kiezen. Dit kan zowel een Linux server als een Windowsserver zijn. Zoals bijvoorbeeld Plopsa, zij hebben een aantal servers die de frontend presenteren met de nodige cashing. Maar ook een aantal servers die de databank beheren. Dit is maar een klein voorbeeld van de managed server allemaal te bieden heeft maar er zijn er zeker nog.
+
+\subsection{Infrastructuur + Netwerk}
+
+\subsection{Automatisatie}
+
+\section{Toekomstige Technologieën}
+
+\section{Probleemstelling}
+
+\section{Onderzoeksvragen}
+\label{sec:onderzoeksvragen}
+
+%% TODO:
+%% Uit je probleemstelling moet duidelijk zijn dat je onderzoek een meerwaarde
+%% heeft voor een concrete doelgroep (bv. een bedrijf).
+%%
+%% Wees zo concreet mogelijk bij het formuleren van je
+%% onderzoeksvra(a)g(en). Een onderzoeksvraag is trouwens iets waar nog
+%% niemand op dit moment een antwoord heeft (voor zover je kan nagaan).
+
+\section{Opzet van deze bachelorproef}
+\label{sec:opzet-bachelorproef}
+
+%% TODO: Het is gebruikelijk aan het einde van de inleiding een overzicht te
+%% geven van de opbouw van de rest van de tekst. Deze sectie bevat al een aanzet
+%% die je kan aanvullen/aanpassen in functie van je eigen tekst.
+
+De rest van deze bachelorproef is als volgt opgebouwd:
+
+In Hoofdstuk~\ref{ch:methodologie} wordt de methodologie toegelicht en worden de gebruikte onderzoekstechnieken besproken om een antwoord te kunnen formuleren op de onderzoeksvragen.
+
+%% TODO: Vul hier aan voor je eigen hoofstukken, één of twee zinnen per hoofdstuk
+
+In Hoofdstuk~\ref{ch:conclusie}, tenslotte, wordt de conclusie gegeven en een antwoord geformuleerd op de onderzoeksvragen. Daarbij wordt ook een aanzet gegeven voor toekomstig onderzoek binnen dit domein.
+
