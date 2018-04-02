@@ -51,6 +51,110 @@ Kijken we dan naar de managed hosting dan zien we dat we hier een aanbod krijgen
 
 \section{Toekomstige Technologieën}
 
+\subsection{Containers}
+
+Tegenwoordig zijn de technologische buzzwords (BRON) Microservices, Microservice Architecture en containers niet meer weg te denken. Het zijn allemaal termen die iets te maken hebben met het runnen van applicaties op een bepaalde manier. Laat ons eerst eens kijken wat microservices en containers zijn, waarom ze er zijn en welke technologieën we hiervoor kunnen gebruiken. 
+
+Om de vraag “waarom hebben we zoiets als containers nodig” te kunnen beantwoorden  moeten we ons eerst een paar andere vragen stellen, namelijk: waar maken we onze applicatie, waar testen we onze applicatie en waar rollen we de applicatie uit?
+
+Bijna iedereen ontwerpt en programmeert zijn applicatie op zijn laptop of werkstation op het werk. Deze toestellen hebben alle nodige libraries, packages en tools die de applicatie moet gebruiken. In het merendeel van de gevallen gebeurt het testen bij de testafdeling van het bedrijf en wordt het uiteindelijke product op een server in productie uitgerold. Het probleem hiermee is dat deze 3 omgevingen niet allemaal dezelfde zijn. Meestal hebben ze niet dezelfde tools of dezelfde libraries of dezelfde versie van een framework. Dit is dus de oorzaak van het probleem: “It worked on my machine”.
+
+Containers kunnen hiervoor een oplossing bieden. Zoals Docker het beschrijft: “A container image is a lightweight, stand-alone, executable package of a piece of software that includes everything needed to run it: code, runtime, system tools, system libraries, settings.”
+
+Wat ze hiermee bedoelen is dat als we een applicatie in een Container steken, dan bevat deze container alles wat de applicatie nodig heeft. Met andere woorden, eenmaal we van de applicatie een container gemaakt hebben kunnen we deze overal uitrollen ongeacht de onderliggende infrastructuur. Dit is een van de belangrijkste redenen waarom containers zo populair geworden zijn.
+
+De reden dat ontwikkelaars een toekomst met containers zien zitten is het feit dat containers de applicatie afschermen van het onderliggende systeem. Dit laat hen bijvoorbeeld toe om meerdere dezelfde applicaties tegelijk op te starten waar ze met verschillende teams aan kunnen werken. Dit is iets wat met een gewone applicatie niet direct mogelijk is.
+
+Nu zullen er waarschijnlijk een aantal lezers zijn die met de terechte vraag zitten, is dit niet wat een virtuele machine (VM) biedt? En tot op een bepaalde hoogte wel, applicaties in een virtuele machine bieden inderdaad een zekere vorm van isolatie, maar dit wel met een gigantische overhead in vergelijking met een container. 
+
+Bekijken we dit even van op een afstand dan kunnen we stellen dat een container eigenlijk een abstractie is van de applicatie layer, het zorgt ervoor dat code en dependenties samen zitten. Zo kunnen meerdere containers samen op een server draaien en de onderliggende kernel delen. Maar nog steeds als individuel geisoleerde processen. Dit is dus de reden dat ze de naak microservices krijgen. Op deze manier nemen containers minder plaats in en kunnen we theoretisch meer containers dan VM’s op een server draaien.
+
+Een virtuele machine kunnen we dan weer bekijken als een abstractie van de fysieke layer van een server. Waardoor we dus 1 server kunnen aanzien als meerdere. Hier is het de hypervisor die de VM’s toelaat om de hardware te gebruiken van de fysieke machine. Het is wel zo dat elke virtuele machine een volledig operating system bevat wat dus al rap enkele gigabytes groot is. Hierdoor is een virtuele machine een heel stuk trager in het opstarten dan een container.
+
+De aandachtige lezer zal zich waarschijnlijk afvragen waarom er staat: “Op deze manier nemen containers minder plaats in en kunnen we theoretisch meer containers dan VM’s op een server draaien”. 
+Na een studie van het bedrijf Datadog HQ is gebleken dat een bedrijf gemiddeld 7 containers per host heeft draaien. Hieruit is ook gebleken dat 25\% van de bedrijven die containers gebruiken er meer dan 14 tegelijk draaien. Er zijn met andere woorden toch nog een aantal mythes over containers die we even moeten aankaarten.
+
+Zoals te zien is in afbeelding XX zien we vaak het beeld dat een server met virtuele machines veel groter is dan een server met containers. 
+
+\includegraphics[height=5cm]{img/docker1.png}
+
+Toch moeten we dit beeld met een korrel zout nemen, als we elke server gaan bekijken in termen van grootte dan zouden we het volgende beeld moeten krijgen. Aangezien we op een server met virtuele machines geen host operating system nodig hebben en we hier enkel gebruik maken van een hypervisor, is het beeld dat de hypervisor en het host operating system even groot zijn niet correct. Ook het beeld dat de docker engine even groot zou zijn als het host operating system is ook niet correct.
+
+\includegraphics[height=5cm]{img/docker2.png}
+
+Indien we alles correct zouden teken dan zien onze modellen er als volgt uit. Dit is al een representatiever beeld van een infrastructuur met virtuele machines en een infrastructuur met containers.
+
+\includegraphics[height=5cm]{img/docker3.png}
+
+Nu we het concept container wat beter begrijpen kunnen we over gaan naar de technologie die dit allemaal mogelijk maakt, namelijk Docker.
+
+Docker is gestart in 2012 als een open source project met de originele naam dotcloud. Het doel van het project was en is om het bouwen en gebruiken van single-applications in linux containers simpeler te maken. Sindsdien is het alleen maar gegroeid in populariteit. Bovenop de abstractie die het biedt om containers aan te maken heeft docker ook een platform ontworpen dat het makkelijk maakt voor devellopers en systeembeheerders om containers te delen en te hergebruiken. Dit gedistribueerd systeem, samen met de ondersteuning op allerhande platformen heeft er voor gezorgd dat docker zo populair geworden is.
+
+Hoe docker containers juist opgebouwd zijn alsook hoe de docker engine werkt is een bachelorproef op zich. Wel zal ik even de belangrijkste elementen aanreiken die we nodig hebben in de verdere proef.
+
+Een Docker image is een statische specificatie van wat de container moet zijn in runtime, dit wil zeggen dat je hierin specifieert in welke folder de app moet staan, welke packages je nodig hebt, welke base image je gebruikt enz.
+
+Van deze Docker images kan je instanties aanmaken, welke docker containers worden genoemd. Het zijn deze containers waarin onze applicatie leeft.
+
+Er zijn er natuurlijk nog een hele hoop maar deze vallen buiten de scope van deze proef.
+
+Zoals te zien is op foto XX zien we dat de docker engine, in tegenstelling tot een een VM-hypervisor, een operating system nodig heeft. 
+Er zijn ondertussen een hand vol bedrijven bezig met het ontwerpen van operating systemen die geoptimaliseerd zijn voor het runnen van containers.
+Zo heb je bijvoorbeeld VMWare die VMware Photon aan het ontwerpen zijn, of Rancher  die RancherOS Ontwerpt. Aangezien we onze virtuele machines op openstack gaan lanceren zijn we gebonden aan de VM types die zij ondersteunen. Het openstack heeft tot op de moment van het schrijven van deze proef enkel ondersteuning voor CoreOS. 
+
+Tot op heden is CoreOS Container Linux de leider op het gebied van container operating system. Het is gebaseerd op een versie van ChromeOS en dit om het host os zo klein en simpel mogelijk het houden. 
+Alle versies van CoreOs komen standaard met hun eigen container engine rtk maar ook met de Docker Engine waar wij gebruik van gaan maken.
+
+Nu we een kleine inleiding gehad hebben over wat containers zijn en welke technologieën we ervoor gaan gebruiken, is het tijd dat we eens naar de onderliggende infrastructuur gaan kijken.
+
+\subsection{OpenStack infrastructuur}
+
+Zoals we in puntje 1.2 hebben kunnen vaststellen, weten we dat Combell tot op heden 2 grote platformen aanbied. Aan de ene zijde heb je de managed hosting die puur draait op VM’s en aan de aneke kant heb je hun OpenStack platform. 
+
+Aangezien ze al een OpenStack platform hebben leek het voor hun dus ook interessanter om container clusters te gaan uitrollen op het OpenStack platform. Maar om dit tot een goed einde te brengen moeten we eerst een antwoord vinden op de vraag wat is OpenStack en hoe kunnen we het gebruiken in deze proef.
+
+Net zoals we bij containers en VM’s gedaan hebben in puntje 1.3.1 is het niet slecht nieuwe om technologieën vanop een afstand te bekijken om te begrijpen wat ze doen en hoe ze werken.
+Dit is ook wat we bij het OpenStack platform gaan doen. 
+
+OpenStack Is een product dat ontstaan is door de samenwerking van Rackspace en het ruimtevaart agentschap NASA. Hun gezamenlijke missie was om een systeem te creeren dat het makkelijk maakte voor bedrijven om hun cloud infrastructuur (op basis van VM’s) op te zetten, maar ook om in de toekomst zonder veel moeite deze infrastructuur uit te breiden. 
+
+Uit deze ideologie bouwde ze OpenStack. OpenStack maakt dit mogelijk omdat het ten eerste open source is en ten 2de werkt het naar analogie zoals een Linux systeem. 
+Openstack is opgemaakt uit verschillende componenten. En omdat het 100% open source is is het dus ook mogelijk om bestaande componenten te wijzigen of om volledig nieuwe componenten te ontwerpen. 
+Laten we even al deze mogelijkheden achterwege dan zien we dat de core van OpenStack bestaat uit 9 componenten. Elke component is verantwoordelijk voor zijn deel van de infrastructuur. Deze worden standaard geïnstalleerd bij elke installatie van OpenStack en worden onderhouden door de OpenStack Community.
+Als eerste hebben we Nova, Nova is de hoofd computing engine van het Openstack Platform. Nova is verantwoordelijk voor het voor het aanmaken en managen van de VM’s.
+
+De 2de grote component is Swift en deze is verantwoordelijk voor het opslag systeem. Om er voor te zorgen dat OpenStack de ideologie van gemakkelijk schalen kan blijven garanderen is het verwijzen naar een bestand op een bepaalde disk niet de juiste manier. Daarom zorgt Swift er voor dat programmeurs in hun code kunnen refereren naar een unieke sleutel zodat OpenStack de plaats van de file kan beslissen. Swift zorgt er op deze manier ook voor dat OpenStack de taak van het back-uppen op zich neemt. Dit is weer een zorg minder voor de ontwerpers.
+
+Omdat in bepaalde gevallen de snelheid van gegevens belangrijker is dan de backup ervan heeft OpenStack hier ook een oplossing voor. Deze noemt Cinder, Cinder is de block storage component die programmeurs toelaat om bestanden op een bepaalde disk te raadplegen.
+
+Een grote kracht van OpenStack is dat het ook de netwerking tussen VM’s volledig voor zijn rekening neemt. Neutron zorgt er voor dat de VM’s tegen elkaar kunnen babbeken op een gemakkelijke en efficiënte manier.
+
+Horizon is de grafische weergave van de OpenStack cloud infrastructuur. Ook al bied OpenStack een API om de infrastructuur op te zetten (Zie later). Soms is het handig om grafisch na te gaan of alles draait naar behoren. Voor veel mensen die beginnen met OpenStack is dit het eerste aanspreekpunt.
+
+Een volgend belangrijk aspect in een cloud infrastructuur is authenticatie en authorisatie. In OpenStack word dit behandeld door Keystone. Keystone houd een centrale lijst bij met de gebruikers die toegang hebben tot OpenStack en daarbij de rechten zie ze hebben op bepaalde services. Het is zelf zo uitgebreid dat applicatie ontwikkelaars de rechten in hun eigen applicatie kunnen weerspeigelen met de gebruikers en services van Keystone.
+
+In OpenStack verstaan we onder “Computing engines” Virtuele machines. Zoals aangegeven in puntje 1.3.1 weten we dat OpenStack standaard een tiental VM Operating systems images bevat. Glance, de Component verantwoordelijk voor de OS Images, laat ons toe om deze images te gebruiken als templates voor het opzetten van een nieuwe virtuele machine. Deze images specifiëren onder andere welke “flavor” van Linux we wensen, welke versie, enz. Let op, in een image specifieren we niet welke recources we nodig hebben. Dit is de taak van de Heat component. 
+We kunnen ons al voorstellen dat bepaalde bedrijven een eigen operating system wensen te gebruiken dat niet standaard in OpenStack aanwezig is. Daarom is er ook de optie om zelf images te schrijven. Hier gaan we niet verder op in aangezien dit buiten de scope van de proef valt.
+
+Een OpenStack Omgeving wordt, zoals bijvoorbeeld bij Combell, opgezet om dan over te dragen aan de klant. Deze kan hier dan verder mee doen wat hij wenst. Het is dus duidelijk dat elke openstack omgeving er anders uit zal zien. Daarom hebben we Ceilometer, deze component laat ons toe om aan “Flavors” van VM’s prijzen te hangen. Zo heb je bijvoorbeeld de m1.tiny, hier krijg je 1 VCPU, 512MB RAM en een 20GB root disk. Deze kust 0.007 Euro per uur of 5 euro per maand. De beschikbare “Flavors” en hun kost, worden bepaald door de hosting provider van het OpenStack platform.
+
+We hebben nu al een aantal keer gesproken over concept “Flavors”, en dit wordt in OpenStack mogelijk gemaakt door de Heat component. Hier kunnen we bepalen welke “Flavor” welke resources ter beschikking heeft. Welke “Flavor” de applicatieontwikkelaar kiest hangt volledig af van zijn budget en van de resources die de applicatie nodig heeft.
+
+Wat we moeten onthouden van het OpenStack platform is dat het ons toelaat om zeer gemakkelijk, via de API of de web interface, virtuele machines te configureren en op te starten. We hoeven ons op deze manier geen zorgen te maken over de netwerk structuur als ook de beveiligde toegang tot de servers. Het laat ons ook toe om in de toekomst eenvoudig uit te breiden naar mate het verkeer naar onze servers stijgt.
+
+
+\subsection{Kubernetes}
+
+\subsection{Automatisatie}
+
+\subsubsection{TerraForm}
+
+
+
+
+
+\subsubsection{Ansible}
+
 \section{Probleemstelling}
 
 \section{Onderzoeksvragen}
